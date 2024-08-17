@@ -1,3 +1,9 @@
+Link sheet: [Báo Cáo Nhóm 6](https://docs.google.com/spreadsheets/d/119bNqV_IazycFBhkVsnMN8nDOzaW4BvZleZ-f1Xn3NU/edit?hl=vi&gid=0#gid=0)
+GIT: https://github.com/VuzPham/TestQuestion_Nhom6
+DOC: [BaoCaoNhom6](https://docs.google.com/spreadsheets/d/119bNqV_IazycFBhkVsnMN8nDOzaW4BvZleZ-f1Xn3NU/edit?hl=vi&gid=0#gid=0)
+
+API: https://66bf5cf442533c403145f070.mockapi.io/api/question-answer/id
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

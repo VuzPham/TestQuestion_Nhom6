@@ -1,21 +1,18 @@
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import { publicRoutes } from '~/routes';
-import {DefaultLayout} from '~/components/Layout';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { publicRoutes } from '~/routes'; // Update this path based on your project structure
+import { DefaultLayout } from '~/components/Layout'; // Update this path based on your project structure
+import QuestionsList from '~/components/QuestionForm/QuestionsList'; // Import the QuestionsList component
 
 function App() {
   return (
-   <Router>
+    <Router>
       <div className="App">
-        <Routes>
-          {publicRoutes.map((route, index) => {
-            const Layout = route.layout || DefaultLayout;
-            const Page = route.component
-            return <Route key={index} path={route.path} element={<Layout><Page/></Layout>}/>
-          })}
-        </Routes>
+        <QuestionsList />
       </div>
-   </Router>
+    </Router>
   );
 }
+
 
 export default App;

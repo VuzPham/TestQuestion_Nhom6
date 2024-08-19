@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import classNames from 'classnames/bind';
@@ -9,22 +10,44 @@ import Button from '~/components/Button';
 const cx = classNames.bind(styles);
 
 function Header() {
+    const [scrolled, setScrolled] = useState(false);
     const isAdminRoute = window.location.pathname.includes('/admin');
 
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 0) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
-        <header className={classNames('container-fill', cx('wrapper'))}>
+        <header className={classNames('container-fill', cx('wrapper', { scrolled }))}>
             <div className={cx('inner')}>
-               <div className={classNames('col-md-6', cx('logo'))}>
-                    <img src={images.logo} alt='Amazing Tech'/>
+               <div className="row align-items-center">
+                    <div className={classNames('col-md-6 col-6', cx('logo'))}>
+                            <img src={images.logo} alt='Amazing Tech'/>
+                    </div>
+                  
+                    <div className={classNames('col-md-6 col-6', cx('actions'))}>
+                        {!isAdminRoute && (
+                            <>
+                                <h3>Do you have any questions?</h3>
+                                <Button outline href={'/addquestion'}>
+                                    Add questions
+                                </Button>
+                            </>
+                        )}
+                    </div>
                </div>
-              
-               <div className={classNames('col-md-6', cx('actions'))}>
-                    {!isAdminRoute && (
-                        <Button primary href={'/addquestion'} className="ml-auto d-block">
-                            Add questions
-                        </Button>
-                    )}
-                </div>
             </div>
         </header>
     );

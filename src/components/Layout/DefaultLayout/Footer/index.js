@@ -9,14 +9,51 @@ const cx = classNames.bind(styles);
 function Footer() {
     return (
         <footer className={classNames('container-fill', cx('wrapper'))}>
-                <div className='row'>
-                    <div className={classNames('col-md-6', cx('logo'))}>
-                        <img src={images.logo} alt='Amazing Tech'/>
-                    </div>
-                    <div className={cx('copy')}>
-                        <p>&copy; {new Date().getFullYear()} Amazing Tech. All rights reserved.</p>
-                    </div>
+            <div className={classNames('row', cx('footer-top'))}>
+                <div className={classNames('col-md-4', cx('content'))}>
+                    <img src={images.logoWhite} alt='Amazing Tech' className={cx('logo')} />
+                    <p className={cx('info')}>
+                        Amazing Tech Company delivers IT solutions and services to established companies that need tailored software for further business growth. With a deep understanding of modern technologies, 
+                        transparent processes, 
+                        and strong expertise in business domains, 
+                        we implement comprehensive projects and deliver high-end web, mobile, IoT, and SaaS solutions.
+                    </p>
                 </div>
+                <div className={classNames('col-md-2', cx('content'))}>
+                    <h3 className={cx('title')}>Primary page</h3>
+                    <p className={cx('info')}>
+                       <ul>
+                            <li>About Us</li>
+                            <li>News</li>
+                            <li>Career</li>
+                            <li>Contact Us</li>
+                       </ul>
+                    </p>
+                </div>
+                <div className={classNames('col-md-2', cx('content'))}>
+                    <h3 className={cx('title')}>Solutions</h3>
+                    <p className={cx('info')}>
+                        <ul>
+                            <li>DevOps</li>
+                            <li>Mobile App Development</li>
+                            <li>Software Testing</li>
+                            <li>Software Engineer</li>
+                            <li>MVP Product Development</li>
+                        </ul>
+                    </p>
+                </div>
+                <div className={classNames('col-md-2', cx('content'))}>
+                    <h3 className={cx('title')}>Products</h3>
+                    <p className={cx('info')}>
+                        <ul>
+                            <li>TeleCRM Platform</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <div className={classNames('row', cx('footer-bottom'))}>
+                <p>&copy; {new Date().getFullYear()} Amazing Tech. All rights reserved.</p>
+            </div>
         </footer>
     );
 }

@@ -1,0 +1,74 @@
+.comment-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto; /* Thay đổi từ 100px nếu cần linh hoạt */
+    margin: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .comment-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+    border-radius: 5px;
+  }
+  
+    
+  .avt-name img {
+    width: 55px; /* Điều chỉnh kích thước hình ảnh nếu cần */
+    height: 55px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .comment {
+    flex-grow: 1;
+    padding-left: 20px;
+  }
+  
+  .comment h6 {
+    margin: 0;
+    text-transform: uppercase;
+  }
+  
+  .comment p {
+    margin: 5px 0;
+  }
+  
+  button {
+    background-color: #001981;
+    color: white;
+    padding: 2px 15px; 
+    cursor: pointer; 
+    font-weight: 600; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.3s ease, transform 0.2s ease; 
+  }
+  
+  button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slightly lift the button on hover */
+  }
+  
+  button:active {
+    background-color: #004085; /* Even darker blue on click */
+    transform: translateY(0); /* Reset transform on click */
+  }
+  
+  button:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Focus ring */
+  }
+  .uppercase{
+    color: #001981;
+    font-weight: bold;
+    font-size: 15px;
+  }
+  .uppercase-header{
+    color: #001981;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }

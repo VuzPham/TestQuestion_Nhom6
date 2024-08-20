@@ -10,8 +10,9 @@ import Button from '~/components/Button';
 const cx = classNames.bind(styles);
 
 function Header() {
-    const [scrolled, setScrolled] = useState(false);
     const isAdminRoute = window.location.pathname.includes('/admin');
+  
+    const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -41,7 +42,9 @@ function Header() {
                         {!isAdminRoute && (
                             <>
                                 <h3>Do you have any questions?</h3>
-                                <Button outline href={'/addquestion'}>
+                                <Button 
+                                    outline 
+                                >
                                     Add questions
                                 </Button>
                             </>

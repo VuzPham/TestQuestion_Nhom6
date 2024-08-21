@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Button, Pagination, CircularProgress, Typography } from '@mui/material';
+import { Grid, Pagination, CircularProgress, Typography } from '@mui/material';
 import QuestionCard from './QuestionCard';
 import EditQuestionModal from './EditQuestionModal';
 import AddQuestionModal from './AddQuestionModal';
+import DeleteQuestionModal from './DeleteQuestionModal';
 
 const QuestionsList = ({ isAddModalOpen, setIsAddModalOpen }) => {
   const [questions, setQuestions] = useState([]);
   const [editingQuestion, setEditingQuestion] = useState(null);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [questionToDelete, setQuestionToDelete] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -28,7 +31,7 @@ const QuestionsList = ({ isAddModalOpen, setIsAddModalOpen }) => {
     };
 
     fetchQuestions();
-  }, []);
+  }, [questions]);
 
   const handleDelete = (id) => {
     setQuestions(questions.filter(question => question.id !== id));
@@ -49,11 +52,12 @@ const QuestionsList = ({ isAddModalOpen, setIsAddModalOpen }) => {
     setQuestions(prevQuestions => [...prevQuestions, newQuestion]);
   };
 
+  
+
   const handlePageChange = (event, newPage) => {
     setCurrentPage(newPage);
   };
 
-  // Calculate which questions to display
   const indexOfLastQuestion = currentPage * questionsPerPage;
   const indexOfFirstQuestion = indexOfLastQuestion - questionsPerPage;
   const currentQuestions = questions.slice(indexOfFirstQuestion, indexOfLastQuestion);
@@ -90,9 +94,10 @@ const QuestionsList = ({ isAddModalOpen, setIsAddModalOpen }) => {
       )}
       <AddQuestionModal
         open={isAddModalOpen}
-        onClose={() => setIsAddModalOpen(false)}
+        onClose={() => setIsAddModalOpen(false)} 
         onAdd={handleAdd}
       />
+     
     </>
   );
 };

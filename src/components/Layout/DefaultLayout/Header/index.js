@@ -7,11 +7,18 @@ import styles from './Header.module.scss';
 import images from '~/assets/images';
 import Button from '~/components/Button';
 
+import AddQuestionModal from '~/components/QuestionForm/AddQuestionModal';
+
 const cx = classNames.bind(styles);
 
-function Header({ handleAdd }) {
-    const isAdminRoute = window.location.pathname.includes('/admin');
+function Header() {
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
+    const handleAdd = () => {
+        setIsAddModalOpen(true);
+    };
   
+    const isAdminRoute = window.location.pathname.includes('/admin');
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
@@ -48,6 +55,8 @@ function Header({ handleAdd }) {
                                 >
                                     Add questions
                                 </Button>
+                                <AddQuestionModal open={isAddModalOpen}   onClose={() => setIsAddModalOpen(false)}  onAdd={() => setIsAddModalOpen(false)}>
+                                </AddQuestionModal> 
                             </>
                         )}
                     </div>

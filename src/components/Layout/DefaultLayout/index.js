@@ -8,30 +8,15 @@ import styles from './DefaultLayout.module.scss';
 const cx = classNames.bind(styles);
 
 function DefaultLayout({ children }) {
-    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-
-    const handleAdd = () => {
-        setIsAddModalOpen(true);
-    };
-
-    const handleCloseAddModal = () => {
-        setIsAddModalOpen(false);
-    };
-
     return (
         <div className={cx('wrapper')}>
-            <Header handleAdd={handleAdd} />
+            <Header />
             <div className="container">
                 <div className="content">
-                    {children}
+                    {children} 
                 </div>
             </div>
-            <Footer />
-            <QuestionsList 
-                isAddModalOpen={isAddModalOpen} 
-                setIsAddModalOpen={setIsAddModalOpen} 
-                onAdd={handleAdd}
-            />
+            <Footer /> 
         </div>
     );
 }

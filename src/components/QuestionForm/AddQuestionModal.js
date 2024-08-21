@@ -15,7 +15,7 @@ const AddQuestionModal = ({ open, onClose, onAdd }) => {
           body: JSON.stringify({
             name: "Intern", 
             question: text,
-            answer: "" 
+            answer: ""
           }),
         });
 
@@ -24,6 +24,7 @@ const AddQuestionModal = ({ open, onClose, onAdd }) => {
           onAdd(newQuestion); // Truyền câu hỏi mới đến QuestionsList
           setText('');
           onClose(); 
+          
         } else {
           console.error('Failed to add question');
         }

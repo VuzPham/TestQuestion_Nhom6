@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 function Home() {
     return (
        <div className={cx('wrapper')}>
-          <QuestionsList/>
+          <QuestionsList/> 
        </div>
     );
 }

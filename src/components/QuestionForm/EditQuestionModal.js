@@ -3,15 +3,20 @@ import { Dialog, DialogTitle, DialogContent, DialogActions, Button, TextField } 
 import './styles.css'; // Import the styles
 
 const EditQuestionModal = ({ open, onClose, question, onSave }) => {
-  const [text, setText] = useState(question.text);
+  const [text, setText] = useState('');
 
-  useEffect(() =>{
-    setText(question.text);
-  }, [question])
+  useEffect(() => {
+    if (question) {
+      setText(question.question);
+    }
+  }, [question]);
 
   const handleSave = () => {
     onSave({ ...question, text });
     onClose();
+    if (text.trim()) {
+      onSave({ ...question, question: text });
+    }
   };
 
   return (

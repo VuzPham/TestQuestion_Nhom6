@@ -10,12 +10,14 @@
   .comment-item {
     border: 1px solid #ddd;
     padding: 10px;
-    margin-bottom: 20px;
     display: flex;
     align-items: flex-start;
     border-radius: 5px;
   }
-  
+.box-comment-answer{
+  margin-bottom: 20px;
+  width: 100%;
+}
     
   .avt-name img {
     width: 55px; /* Điều chỉnh kích thước hình ảnh nếu cần */

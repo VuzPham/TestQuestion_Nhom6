@@ -1,21 +1,18 @@
 
 import './StyleAdminPage.css'; // Đảm bảo bạn đã tạo file CSS cho các kiểu dáng
 import images from '~/assets/images';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMessage } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useState } from "react";
 
-export default function AdminPage() {
-  // Initialize the state as an empty array
-  const [questions, setQuestions] = useState([]);
 
-  // Function to fetch questions from the API
+export default function AdminPage() {
+  const [questions, setQuestions] = useState([]);
+  const [activeReply, setActiveReply] = useState(null);
+
   const fetchQuestions = async () => {
     try {
       const response = await fetch("https://66bf5cf442533c403145f070.mockapi.io/api/question-answer/id");
       const data = await response.json();
 
-      // Check if the response data is an array
       if (Array.isArray(data)) {
         setQuestions(data);
       } else {
@@ -26,16 +23,70 @@ export default function AdminPage() {
     }
   };
 
-  // useEffect to fetch questions when the component mounts
   useEffect(() => {
     fetchQuestions();
   }, []);
 
-  // Function to handle reply button click
   const handleReply = (id) => {
-    alert(`Trả lời câu hỏi với ID: ${id}`);
-    // Implement additional actions like opening a reply dialog or redirecting to a reply page
+    setActiveReply(id === activeReply ? null : id);
   };
+
+  const handleAnswerChange = (id, newAnswer) => {
+    // Cập nhật câu trả lời trong state questions
+    setQuestions(prevQuestions =>
+      prevQuestions.map(question =>
+        question.id === id ? { ...question, answer: newAnswer } : question
+      )
+    );
+  };
+  const handleKeyDown = async (e, id) => {
+      const updatedQuestion = questions.find(question => question.id === id);
+      
+      try {
+        const response = await fetch(`https://66bf5cf442533c403145f070.mockapi.io/api/question-answer/id/${id}`, {
+          method: 'PUT', // Sử dụng phương thức PUT để cập nhật dữ liệu
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ answer: updatedQuestion.answer }), // Gửi câu trả lời mới nhất
+        });
+
+        if (response.ok) {
+          alert('Answer updated successfully');
+          window.location.reload(); // Tải lại trang
+        
+        } else {
+          console.error('Failed to update answer');
+        }
+      } catch (error) {
+        console.error('Error updating answer:', error);
+      }
+  };
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(`https://66bf5cf442533c403145f070.mockapi.io/api/question-answer/id/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ answer: ' ' }), // Cập nhật câu trả lời thành chuỗi rỗng
+      });
+
+      if (response.ok) {
+        console.log('Answer deleted successfully');
+        setQuestions(prevQuestions =>
+          prevQuestions.map(question =>
+            question.id === id ? { ...question, answer: ' ' } : question
+          )
+        );
+      } else {
+        console.error('Failed to delete answer');
+      }
+    } catch (error) {
+      console.error('Error deleting answer:', error);
+    }
+  };
+
 
   return (
     <div className="comment-box">
@@ -49,22 +100,58 @@ export default function AdminPage() {
               backgroundColor: "#001981",
             }}
           ></div>
-          <div className="comment-item">
-            <div className="avt-name">
-              <img src={images.avatar} alt="Avatar" />
-              <p style={{ color: "green" }}>GUEST</p>
+          <div className='box-comment-answer'>
+              <div className="comment-item">
+                <div className="avt-name">
+                  <img src={images.avatar} alt="Avatar" />
+                  <p style={{ color: "green" }}>GUEST</p>
+                </div>
+                <div className="comment">
+                  <h6 className="uppercase">{question.name}</h6>
+                  <p>{question.question}</p>
+                  <br />
+                  <button onClick={() => handleReply(question.id)}>Trả lời</button>
+                  {activeReply === question.id && (
+                    <div style={{ marginTop: '10px' }}>
+                      <input
+                        type="text"
+                        placeholder="Nhập câu trả lời của bạn..."
+                        style={{ width: '99.5%', padding: '20px', border: '1px solid black', margin: '5px' }}
+                        onChange={(e) => handleAnswerChange(question.id, e.target.value)} // Cập nhật câu trả lời khi người dùng nhập
+                      />
+                      
+                      <button  button style ={{float: "right"}} onClick={(e) => handleKeyDown(e, question.id)}>Trả lời</button>
+                    </div>
+                  
+                  )}
+                </div>
+              </div>
+            {/* Hiển thị AnswerBox chỉ khi question.answer không phải là rỗng */}
+            {question.answer != " " && (
+                    <AnswerBox 
+                      answer={question.answer} 
+                      onDelete={() => handleDelete(question.id)} // Truyền hàm xóa vào AnswerBox  
+                    />
+                  )}
             </div>
-            <div className="comment">
-              <h6 className="uppercase">{question.name}</h6>
-              <p>{question.question}</p>
-              <br/>
-              
-              <button onClick={() => handleReply(question.id)}><FontAwesomeIcon icon={faMessage} />   Trả lời</button>
-            </div>
-           
-          </div>
         </div>
       ))}
     </div>
   );
+}
+function AnswerBox ({answer,onDelete }){
+  return (
+    <div className="comment-item">
+    <div className="avt-name">
+        <img src={images.avatar} alt="Avatar" />
+        <p style={{ color: "red" }}>ADMIN</p>
+      </div>
+    <div className="comment">
+        <h6 className="uppercase">ADMINISTRATOR</h6>
+        <p>{answer}</p>
+        <br />
+        <button onClick={onDelete} style={{ float: 'right' }}>Xóa</button>
+      </div>
+  </div>
+  )
 }

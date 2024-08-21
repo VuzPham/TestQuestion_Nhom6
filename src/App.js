@@ -1,16 +1,20 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { publicRoutes } from '~/routes'; // Update this path based on your project structure
-import { DefaultLayout } from '~/components/Layout'; // Update this path based on your project structure
-import QuestionsList from '~/components/QuestionForm/QuestionsList'; // Import the QuestionsList component
-
+import { publicRoutes } from '~/routes'; 
+import { DefaultLayout } from '~/components/Layout'; 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <QuestionsList />
-      </div>
-    </Router>
+      <Router>
+        <div className="App">
+          <Routes>
+            {publicRoutes.map((route, index) => {
+              const Layout = route.layout || DefaultLayout;
+              const Page = route.component
+              return <Route key={index} path={route.path} element={<Layout><Page/></Layout>}/>
+            })}
+          </Routes>
+        </div>
+      </Router>
   );
 }
 

@@ -4,7 +4,7 @@ import QuestionCard from './QuestionCard';
 import EditQuestionModal from './EditQuestionModal';
 import AddQuestionModal from './AddQuestionModal';
 
-const QuestionsList = () => {
+const QuestionsList = ({ isAddModalOpen, setIsAddModalOpen }) => {
   const [questions, setQuestions] = useState([
     { id: 1, text: 'How long do we have for the test?' },
     { id: 2, text: 'Can you explain sexual and asexual reproduction?' },
@@ -13,7 +13,6 @@ const QuestionsList = () => {
 
   const [editingQuestion, setEditingQuestion] = useState(null);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const questionsPerPage = 6;
 
@@ -51,14 +50,6 @@ const QuestionsList = () => {
 
   return (
     <>
-      <Button 
-        variant="contained" 
-        color="primary" 
-        onClick={() => setIsAddModalOpen(true)}
-        style={{ marginBottom: '16px' }}
-      >
-        Add Question
-      </Button>
       <Grid container spacing={2}>
         {currentQuestions.map(question => (
           <Grid item xs={12} sm={6} md={4} key={question.id}>

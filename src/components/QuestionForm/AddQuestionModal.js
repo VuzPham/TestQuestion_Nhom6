@@ -1,15 +1,34 @@
 import React, { useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, TextField } from '@mui/material';
-import './styles.css'; // Import the styles
 
-const AddQuestionModal = ({ open, onClose, onAdd }) => {
+const AddQuestionModal = ({ open, onClose }) => {
   const [text, setText] = useState('');
 
-  const handleAdd = () => {
+  const handleAdd = async () => {
     if (text.trim()) {
-      onAdd(text);
-      setText('');
-      onClose();
+      try {
+        const response = await fetch("https://66bf5cf442533c403145f070.mockapi.io/api/question-answer/id", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: "Intern", 
+            question: text,
+            answer: " " 
+          }),
+        });
+
+        if (response.ok) {
+          alert('Question added successfully');
+          setText('');
+          onClose(); 
+        } else {
+          console.error('Failed to add question');
+        }
+      } catch (error) {
+        console.error('Error adding question:', error);
+      }
     }
   };
 
@@ -23,10 +42,8 @@ const AddQuestionModal = ({ open, onClose, onAdd }) => {
           label="Question"
           type="text"
           fullWidth
-          variant="standard"
           value={text}
           onChange={(e) => setText(e.target.value)}
-          className="modal-textfield"
         />
       </DialogContent>
       <DialogActions>

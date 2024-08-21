@@ -2,6 +2,8 @@
 import './StyleAdminPage.css'; // Đảm bảo bạn đã tạo file CSS cho các kiểu dáng
 import images from '~/assets/images';
 import React, { useEffect, useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPager, faPaperPlane, faReply, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function AdminPage() {
@@ -110,17 +112,16 @@ export default function AdminPage() {
                   <h6 className="uppercase">{question.name}</h6>
                   <p>{question.question}</p>
                   <br />
-                  <button onClick={() => handleReply(question.id)}>Trả lời</button>
+                  <button className='btn-reply' onClick={() => handleReply(question.id)}><FontAwesomeIcon icon={faReply}/>Reply</button>
                   {activeReply === question.id && (
-                    <div style={{ marginTop: '10px' }}>
+                    <div className='answer-admin' style={{ marginTop: '10px' }}>
                       <input
+                        className='input-answer'
                         type="text"
                         placeholder="Nhập câu trả lời của bạn..."
-                        style={{ width: '99.5%', padding: '20px', border: '1px solid black', margin: '5px' }}
                         onChange={(e) => handleAnswerChange(question.id, e.target.value)} // Cập nhật câu trả lời khi người dùng nhập
                       />
-                      
-                      <button  button style ={{float: "right"}} onClick={(e) => handleKeyDown(e, question.id)}>Trả lời</button>
+                      <button onClick={(e) => handleKeyDown(e, question.id)}><FontAwesomeIcon icon={faPaperPlane}/></button>
                     </div>
                   
                   )}
@@ -150,7 +151,7 @@ function AnswerBox ({answer,onDelete }){
         <h6 className="uppercase">ADMINISTRATOR</h6>
         <p>{answer}</p>
         <br />
-        <button onClick={onDelete} style={{ float: 'right' }}>Xóa</button>
+        <button className='btn-delete' onClick={onDelete} style={{ float: 'right' }}><FontAwesomeIcon icon={faTrashCan}/></button>
       </div>
   </div>
   )

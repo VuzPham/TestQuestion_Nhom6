@@ -5,11 +5,7 @@ import EditQuestionModal from './EditQuestionModal';
 import AddQuestionModal from './AddQuestionModal';
 
 const QuestionsList = ({ isAddModalOpen, setIsAddModalOpen }) => {
-  const [questions, setQuestions] = useState([
-    { id: 1, text: 'How long do we have for the test?' },
-    { id: 2, text: 'Can you explain sexual and asexual reproduction?' },
-    // Add more questions if needed
-  ]);
+  const [questions, setQuestions] = useState([]);
 
   const [editingQuestion, setEditingQuestion] = useState(null);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);

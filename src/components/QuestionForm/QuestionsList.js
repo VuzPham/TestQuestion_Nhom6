@@ -1,16 +1,34 @@
-import React, { useState } from 'react';
-import { Grid, Button, Pagination } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { Grid, Button, Pagination, CircularProgress, Typography } from '@mui/material';
 import QuestionCard from './QuestionCard';
 import EditQuestionModal from './EditQuestionModal';
 import AddQuestionModal from './AddQuestionModal';
 
 const QuestionsList = ({ isAddModalOpen, setIsAddModalOpen }) => {
   const [questions, setQuestions] = useState([]);
-
   const [editingQuestion, setEditingQuestion] = useState(null);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const questionsPerPage = 6;
+
+  useEffect(() => {
+    const fetchQuestions = async () => {
+      try {
+        const response = await fetch("https://66bf5cf442533c403145f070.mockapi.io/api/question-answer/id");
+        if (!response.ok) throw new Error('Failed to fetch questions');
+        const data = await response.json();
+        setQuestions(data);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchQuestions();
+  }, []);
 
   const handleDelete = (id) => {
     setQuestions(questions.filter(question => question.id !== id));
@@ -27,12 +45,8 @@ const QuestionsList = ({ isAddModalOpen, setIsAddModalOpen }) => {
     ));
   };
 
-  const handleAdd = (text) => {
-    const newQuestion = {
-      id: questions.length + 1,
-      text
-    };
-    setQuestions([...questions, newQuestion]);
+  const handleAdd = (newQuestion) => {
+    setQuestions(prevQuestions => [...prevQuestions, newQuestion]);
   };
 
   const handlePageChange = (event, newPage) => {
@@ -43,6 +57,9 @@ const QuestionsList = ({ isAddModalOpen, setIsAddModalOpen }) => {
   const indexOfLastQuestion = currentPage * questionsPerPage;
   const indexOfFirstQuestion = indexOfLastQuestion - questionsPerPage;
   const currentQuestions = questions.slice(indexOfFirstQuestion, indexOfLastQuestion);
+
+  if (loading) return <CircularProgress />;
+  if (error) return <Typography color="error">{error}</Typography>;
 
   return (
     <>
@@ -60,7 +77,7 @@ const QuestionsList = ({ isAddModalOpen, setIsAddModalOpen }) => {
       <Pagination
         count={Math.ceil(questions.length / questionsPerPage)}
         page={currentPage}
-        onChange={handlePageChange}
+        onChange={handlePageChange} 
         style={{ marginTop: '16px', display: 'flex', justifyContent: 'center' }}
       />
       {editingQuestion && (

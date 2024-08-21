@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, TextField } from '@mui/material';
 
-const AddQuestionModal = ({ open, onClose }) => {
+const AddQuestionModal = ({ open, onClose, onAdd }) => {
   const [text, setText] = useState('');
 
   const handleAdd = async () => {
@@ -15,12 +15,13 @@ const AddQuestionModal = ({ open, onClose }) => {
           body: JSON.stringify({
             name: "Intern", 
             question: text,
-            answer: " " 
+            answer: "" 
           }),
         });
 
         if (response.ok) {
-          alert('Question added successfully');
+          const newQuestion = await response.json();
+          onAdd(newQuestion); // Truyền câu hỏi mới đến QuestionsList
           setText('');
           onClose(); 
         } else {

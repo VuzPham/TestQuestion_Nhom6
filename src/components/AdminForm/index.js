@@ -128,7 +128,7 @@ export default function AdminPage() {
                 </div>
               </div>
             {/* Hiển thị AnswerBox chỉ khi question.answer không phải là rỗng */}
-            {question.answer != " " && (
+            {question.answer !== " " && (
                     <AnswerBox 
                       answer={question.answer} 
                       onDelete={() => handleDelete(question.id)} // Truyền hàm xóa vào AnswerBox  

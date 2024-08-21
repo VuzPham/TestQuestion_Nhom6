@@ -3,15 +3,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import classNames from 'classnames/bind';
 
-import styles from './Header.module.scss'
+import styles from './Header.module.scss';
 import images from '~/assets/images';
 import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
-function Header() {
-    const [scrolled, setScrolled] = useState(false);
+function Header({ handleAdd }) {
     const isAdminRoute = window.location.pathname.includes('/admin');
+  
+    const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -34,14 +35,17 @@ function Header() {
             <div className={cx('inner')}>
                <div className="row align-items-center">
                     <div className={classNames('col-md-6 col-6', cx('logo'))}>
-                            <img src={images.logo} alt='Amazing Tech'/>
+                        <img src={images.logo} alt='Amazing Tech'/>
                     </div>
                   
                     <div className={classNames('col-md-6 col-6', cx('actions'))}>
                         {!isAdminRoute && (
                             <>
                                 <h3>Do you have any questions?</h3>
-                                <Button outline href={'/addquestion'}>
+                                <Button 
+                                    outline 
+                                    onClick={handleAdd} // Gọi hàm callback khi nhấn nút
+                                >
                                     Add questions
                                 </Button>
                             </>

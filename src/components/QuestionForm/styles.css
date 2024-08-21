@@ -1,0 +1,127 @@
+/* src/components/QuestionForm/styles.css */
+
+/* Container Styles */
+.container {
+  width: 80%;
+  margin: auto;
+  padding: 16px; /* Optional padding */
+}
+
+/* Card Styles */
+.question-card {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.question-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Header Styles */
+.question-card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.question-card-avatar {
+  margin-right: 12px;
+}
+
+.question-card-name {
+  font-size: 18px; /* Adjust font size for name */
+  font-weight: bold;
+}
+
+/* Card Content Styles */
+.question-card-content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.question-card-text {
+  margin-bottom: 8px;
+  font-size: 18px; /* Adjusted for better readability */
+  color: #333;
+}
+
+/* Card Actions Styles */
+.question-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+/* Button Styles */
+.add-question-button {
+  margin-bottom: 16px;
+  font-size: 18px; /* Button text size */
+}
+
+/* Modal Styles */
+.modal-content {
+  padding: 16px;
+  border-radius: 8px;
+  width: 80%; /* Adjusted to take up 80% of container width */
+  max-width: 800px; /* Adjust maximum width for larger screens */
+}
+
+.modal-title {
+  font-size: 24px; /* Font size for the title */
+  margin-bottom: 16px; /* Space below the title */
+}
+
+.modal-textfield {
+  margin-top: 16px;
+}
+
+.modal-textfield input {
+  font-size: 18px; /* Font size for input fields */
+  width: 100%; /* Full width for the input field */
+  padding: 10px; /* Padding inside the input field */
+  box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+.modal-button {
+  font-size: 18px; /* Font size for buttons */
+  padding: 12px 24px; /* Padding for better button appearance */
+  margin-top: 16px; /* Space above the button */
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+  .modal-content {
+      padding: 16px; /* Increased padding for mobile view */
+      width: 90%; /* Adjusted width for modal on mobile */
+      max-width: none; /* Remove maximum width constraint */
+  }
+
+  .modal-title {
+      font-size: 20px; /* Title font size for mobile */
+  }
+
+  .modal-textfield input {
+      font-size: 16px; /* Input font size for mobile */
+      padding: 8px; /* Adjusted padding for mobile input fields */
+  }
+
+  .modal-button {
+      font-size: 16px; /* Font size for modal buttons on mobile */
+      padding: 8px 16px; /* Adjusted padding for mobile buttons */
+  }
+
+  .question-card-text {
+      font-size: 16px; /* Adjusted font size for card text on mobile */
+  }
+  
+  .container {
+      width: 100%; /* Full width for container on mobile */
+  }
+}

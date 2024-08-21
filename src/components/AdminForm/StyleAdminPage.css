@@ -40,30 +40,28 @@
     margin: 5px 0;
   }
   
-  button {
-    background-color: #001981;
-    color: white;
-    padding: 2px 15px; 
-    cursor: pointer; 
-    font-weight: 600; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-    transition: background-color 0.3s ease, transform 0.2s ease; 
+  .answer-admin{
+    display: flex;
   }
-  
-  button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-    transform: translateY(-2px); /* Slightly lift the button on hover */
+
+  .answer-admin button{
+    margin-left: 20px;
+    background-color: transparent;
+    color: #001981;
+    box-shadow: none;
+    font-size: 25px;
   }
-  
-  button:active {
-    background-color: #004085; /* Even darker blue on click */
-    transform: translateY(0); /* Reset transform on click */
+
+  .answer-admin button:hover{
+    border-radius: 50%;
   }
-  
-  button:focus {
-    outline: none; /* Remove default focus outline */
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Focus ring */
+  .input-answer{
+    border-radius: 999px;
+    width: 70%;
+    border: 1px solid black;
+    padding: 10px;
   }
+
   .uppercase{
     color: #001981;
     font-weight: bold;
@@ -73,4 +71,27 @@
     color: #001981;
     font-weight: bold;
     margin-bottom: 10px;
+  }
+
+  .btn-reply{
+    background-color: transparent;
+    padding: 5px 10px;
+    border-radius: 999px;
+    transition: 0.2s ease-in;
+    color: #001981;
+    margin-right: 20px;
+  }
+
+  .btn-delete{
+    background-color: transparent;
+    font-size: 24px;
+    color: rgb(255, 0, 0);
+    padding: 5px 10px;
+    border-radius: 999px;
+    transition: 0.2s ease-in;
+  }
+
+  .btn-delete:hover{
+    background-color: #ff0000;
+    color: #fff;
   }

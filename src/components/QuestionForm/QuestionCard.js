@@ -18,9 +18,9 @@ const QuestionCard = ({ question, onDelete, onEdit }) => {
           <Avatar className="question-card-avatar">A</Avatar> {/* Replace "A" with the user's initial or image */}
           <Typography variant="subtitle1" className="question-card-name">John Doe</Typography> {/* Replace with the user's name */}
         </div>
-        <Typography variant="h6" className="question-card-text">{question.text}</Typography>
+        <Typography variant="h6" className="question-card-text">{question.question}</Typography>
         <div className="question-card-actions">
-          <CopyToClipboard text={question.text} onCopy={handleCopy}>
+          <CopyToClipboard text={question.question} onCopy={handleCopy}>
             <Tooltip title="Copy">
               <IconButton>
                 <ContentCopyIcon sx={{ color: 'primary.main' }} /> {/* Apply a color from the theme */}

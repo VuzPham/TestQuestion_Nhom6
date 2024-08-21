@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, TextField } from '@mui/material';
 import './styles.css'; // Import the styles
 
 const EditQuestionModal = ({ open, onClose, question, onSave }) => {
-  const [text, setText] = useState(question.text);
+  const [text, setText] = useState('');
+
+  useEffect(() => {
+    if (question) {
+      setText(question.question);
+    }
+  }, [question]);
 
   const handleSave = () => {
-    onSave({ ...question, text });
-    onClose();
+    if (text.trim()) {
+      onSave({ ...question, question: text });
+    }
   };
 
   return (

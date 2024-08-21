@@ -24,14 +24,15 @@ function DefaultLayout({ children }) {
             <div className="container">
                 <div className="content">
                     {children}
+                    <QuestionsList 
+                        isAddModalOpen={isAddModalOpen} 
+                        setIsAddModalOpen={setIsAddModalOpen} 
+                        onAdd={handleAdd}
+                    />
                 </div>
             </div>
             <Footer />
-            <QuestionsList 
-                isAddModalOpen={isAddModalOpen} 
-                setIsAddModalOpen={setIsAddModalOpen} 
-                onAdd={handleAdd}
-            />
+            
         </div>
     );
 }

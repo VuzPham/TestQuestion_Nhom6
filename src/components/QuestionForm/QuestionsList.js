@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { Grid, Button } from '@mui/material';
+import { Grid, Button, Pagination } from '@mui/material';
 import QuestionCard from './QuestionCard';
 import EditQuestionModal from './EditQuestionModal';
-import AddQuestionModal from './AddQuestionModal'; // Import the add question modal
-import './styles.css'; // Import the styles
+import AddQuestionModal from './AddQuestionModal';
 
 const QuestionsList = () => {
   const [questions, setQuestions] = useState([
@@ -15,6 +14,8 @@ const QuestionsList = () => {
   const [editingQuestion, setEditingQuestion] = useState(null);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const questionsPerPage = 6;
 
   const handleDelete = (id) => {
     setQuestions(questions.filter(question => question.id !== id));
@@ -39,18 +40,27 @@ const QuestionsList = () => {
     setQuestions([...questions, newQuestion]);
   };
 
+  const handlePageChange = (event, newPage) => {
+    setCurrentPage(newPage);
+  };
+
+  // Calculate which questions to display
+  const indexOfLastQuestion = currentPage * questionsPerPage;
+  const indexOfFirstQuestion = indexOfLastQuestion - questionsPerPage;
+  const currentQuestions = questions.slice(indexOfFirstQuestion, indexOfLastQuestion);
+
   return (
     <>
       <Button 
         variant="contained" 
         color="primary" 
         onClick={() => setIsAddModalOpen(true)}
-        className="add-question-button"
+        style={{ marginBottom: '16px' }}
       >
         Add Question
       </Button>
-      <Grid container spacing={2} className="grid-container">
-        {questions.map(question => (
+      <Grid container spacing={2}>
+        {currentQuestions.map(question => (
           <Grid item xs={12} sm={6} md={4} key={question.id}>
             <QuestionCard
               question={question}
@@ -60,6 +70,12 @@ const QuestionsList = () => {
           </Grid>
         ))}
       </Grid>
+      <Pagination
+        count={Math.ceil(questions.length / questionsPerPage)}
+        page={currentPage}
+        onChange={handlePageChange}
+        style={{ marginTop: '16px', display: 'flex', justifyContent: 'center' }}
+      />
       {editingQuestion && (
         <EditQuestionModal
           open={isEditModalOpen}

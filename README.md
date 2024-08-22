@@ -10,7 +10,7 @@ API: https://66bf5cf442533c403145f070.mockapi.io/api/question-answer/id
 # Thành viên
 <h3>My Team  </h3>
 
-| STT | Họ tên | Chức vụ  | | Email  | 
+| STT | Họ tên | Chức vụ  |  Email  | 
 |----------------|--------------------|--------------------|--------------------|
 |  1  |  Phạm Nguyên Vũ  |   Leader  |   phamnguyenvu287@gmail.com  |
 |  2  |  Nguyễn Xuân Bính  |   Member  |   Nguyenbinh17062003@gmail.com  |

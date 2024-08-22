@@ -1,4 +1,4 @@
-.wrapper{
+.wrapper {
     margin-top: auto;
     width: 100%;
     flex-direction: column;
@@ -8,9 +8,10 @@
     height: 100%;
 }
 
-.footer-top{
+.footer-top {
     padding: 120px 50px;
     justify-content: space-between;
+    width: 100%;
 }
 
 .content {
@@ -19,30 +20,33 @@
     text-align: start;
     margin-bottom: 36px;
 
-    img{
+    img {
         width: 200px;
     }
 }
-.title{
+
+.title {
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 36px;
     color: #fff;
     text-align: start;
 }
+
 .logo {
     margin-bottom: 15px;
     cursor: pointer;
 }
 
-.footer-bottom{
+.footer-bottom {
     position: relative;
     display: block;
     border-top: 1px solid rgba(248, 249, 250, .05);
     padding-top: 1.5rem !important;
     padding-bottom: 1.5rem !important;
     color: #fff;
-    margin: 0px 40px;
+    margin: 0; /* Adjust margin */
+    width: 100%; /* Ensure full width */
 }
 
 .copy {
@@ -50,18 +54,18 @@
     text-align: start;
 }
 
-.info{
+.info {
     color: #d9d9d9;
     text-align: start;
-    ul{
+    ul {
         padding: 0;
     }
-    li{
+    li {
         list-style-type: none;
         margin: 10px 0px;
         cursor: pointer;
 
-        &:hover{
+        &:hover {
             color: #fff;
         }
     }

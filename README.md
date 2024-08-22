@@ -10,12 +10,12 @@ API: https://66bf5cf442533c403145f070.mockapi.io/api/question-answer/id
 # Thành viên
 <h3>My Team  </h3>
 
-| STT | Họ tên | Chức vụ  |
-|----------------|--------------------|--------------------|
-|  1  |  Phạm Nguyên Vũ  |   Leader  |
-|  2  |  Nguyễn Xuân Bính  |   Member  |
-|  2  |  Lê Anh Quân  |   Member  |
-|  2  |  Lê Minh Tuấn  |   Member  |
+| STT | Họ tên | Chức vụ  | | Email  | 
+|----------------|--------------------|--------------------|--------------------|
+|  1  |  Phạm Nguyên Vũ  |   Leader  |   phamnguyenvu287@gmail.com  |
+|  2  |  Nguyễn Xuân Bính  |   Member  |   Nguyenbinh17062003@gmail.com  |
+|  3  |  Lê Anh Quân  |   Member  |   leanhquananlao@gmail.com  |
+|  4  |  Lê Minh Tuấn  |   Member  |   lmtuan21082003@gmail.com  |
 
 -----------------------------------------------
 ### Công nghệ sử dụng </br>

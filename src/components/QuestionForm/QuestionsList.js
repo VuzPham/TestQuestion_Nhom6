@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Button, Pagination, CircularProgress, Typography } from '@mui/material';
+import { Grid, Pagination, CircularProgress, Typography } from '@mui/material';
 import QuestionCard from './QuestionCard';
 import EditQuestionModal from './EditQuestionModal';
 import AddQuestionModal from './AddQuestionModal';
@@ -18,8 +18,6 @@ const QuestionsList = ({ isAddModalOpen, setIsAddModalOpen }) => {
 
   useEffect(() => {
     const fetchQuestions = async () => {
-      setLoading(true);
-      setError(null);
       try {
         const response = await fetch("https://66bf5cf442533c403145f070.mockapi.io/api/question-answer/id");
         if (!response.ok) throw new Error('Failed to fetch questions');
@@ -33,12 +31,7 @@ const QuestionsList = ({ isAddModalOpen, setIsAddModalOpen }) => {
     };
 
     fetchQuestions();
-  }, []);
-
-  const handleDelete = (id) => {
-    setQuestionToDelete(id);
-    setIsDeleteModalOpen(true);
-  };
+  }, [questions]);
 
   const confirmDelete = async (id) => {
     try {
@@ -86,33 +79,14 @@ const QuestionsList = ({ isAddModalOpen, setIsAddModalOpen }) => {
     }
   };
 
-  const handleAdd = async (newQuestion) => {
-    try {
-      const response = await fetch("https://66bf5cf442533c403145f070.mockapi.io/api/question-answer/id", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newQuestion),
-      });
-
-      if (response.ok) {
-        const createdQuestion = await response.json();
-        setQuestions(prevQuestions => [...prevQuestions, createdQuestion]);
-        setIsAddModalOpen(false);
-      } else {
-        console.error('Failed to add question');
-      }
-    } catch (error) {
-      console.error('Error adding question:', error);
-    }
+  const handleAdd = (newQuestion) => {
+    setQuestions(prevQuestions => [...prevQuestions, newQuestion]);
   };
 
   const handlePageChange = (event, newPage) => {
     setCurrentPage(newPage);
   };
 
-  // Calculate which questions to display
   const indexOfLastQuestion = currentPage * questionsPerPage;
   const indexOfFirstQuestion = indexOfLastQuestion - questionsPerPage;
   const currentQuestions = questions.slice(indexOfFirstQuestion, indexOfLastQuestion);
@@ -127,7 +101,10 @@ const QuestionsList = ({ isAddModalOpen, setIsAddModalOpen }) => {
           <Grid item xs={12} sm={6} md={4} key={question.id}>
             <QuestionCard
               question={question}
-              onDelete={() => handleDelete(question.id)}
+              onDelete={() => {
+                setQuestionToDelete(question.id);
+                setIsDeleteModalOpen(true);
+              }}
               onEdit={() => handleEdit(question)}
             />
           </Grid>
@@ -149,15 +126,17 @@ const QuestionsList = ({ isAddModalOpen, setIsAddModalOpen }) => {
       )}
       <AddQuestionModal
         open={isAddModalOpen}
-        onClose={() => setIsAddModalOpen(false)}
+        onClose={() => setIsAddModalOpen(false)} 
         onAdd={handleAdd}
       />
-      <DeleteQuestionModal
-        open={isDeleteModalOpen}
-        onClose={() => setIsDeleteModalOpen(false)}
-        onDelete={confirmDelete}
-        questionId={questionToDelete}
-      />
+      {isDeleteModalOpen && (
+        <DeleteQuestionModal
+          open={isDeleteModalOpen}
+          onClose={() => setIsDeleteModalOpen(false)}
+          confirmDelete={confirmDelete} // Sử dụng confirmDelete cho modal xóa
+          questionId={questionToDelete}
+        />
+      )}
     </>
   );
 };

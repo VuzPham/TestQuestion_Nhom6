@@ -1,9 +1,9 @@
 import React from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Typography } from '@mui/material';
 
-const DeleteQuestionModal = ({ open, onClose, onDelete, questionId }) => {
+const DeleteQuestionModal = ({ open, onClose, confirmDelete, questionId }) => {
   const handleDelete = () => {
-    onDelete(questionId);
+    confirmDelete(questionId); // Gọi hàm confirmDelete để xóa câu hỏi
   };
 
   return (

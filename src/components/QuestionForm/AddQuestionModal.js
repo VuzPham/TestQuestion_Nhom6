@@ -15,15 +15,16 @@ const AddQuestionModal = ({ open, onClose, onAdd }) => {
           body: JSON.stringify({
             name: "Intern", 
             question: text,
-            answer: "" 
+            answer: ""
           }),
         });
 
         if (response.ok) {
           const newQuestion = await response.json();
-          onAdd(newQuestion); 
+          onAdd(newQuestion); // Truyền câu hỏi mới đến QuestionsList
           setText('');
           onClose(); 
+          
         } else {
           console.error('Failed to add question');
         }

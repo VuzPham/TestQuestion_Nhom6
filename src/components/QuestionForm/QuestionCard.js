@@ -1,14 +1,20 @@
 // src/components/QuestionForm/QuestionCard.js
-import React from 'react';
-import { Card, CardContent, Typography, IconButton, Avatar, Tooltip } from '@mui/material';
+import React, { useState } from 'react';
+import { Card, CardContent, Typography, IconButton, Avatar, Tooltip, Snackbar } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import { CopyToClipboard } from 'react-copy-to-clipboard'; // Install this package if you haven't
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const QuestionCard = ({ question, onDelete, onEdit }) => {
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+
   const handleCopy = () => {
-    // This function is triggered when the copy button is clicked
+    setSnackbarOpen(true); // Show the snackbar when the text is copied
+  };
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
   };
 
   return (
@@ -35,6 +41,12 @@ const QuestionCard = ({ question, onDelete, onEdit }) => {
           </IconButton>
         </div>
       </CardContent>
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+        message="Question copied to clipboard"
+      />
     </Card>
   );
 };

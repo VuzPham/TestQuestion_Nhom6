@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/VuzPham/TestQuestion_Nhom6.git/static/css/main.d87b9ec9.css",
+    "main.js": "/VuzPham/TestQuestion_Nhom6.git/static/js/main.08df1e20.js",
+    "static/js/453.bc454679.chunk.js": "/VuzPham/TestQuestion_Nhom6.git/static/js/453.bc454679.chunk.js",
+    "static/media/logo-white.png": "/VuzPham/TestQuestion_Nhom6.git/static/media/logo-white.39a38ab14727524c527c.png",
+    "index.html": "/VuzPham/TestQuestion_Nhom6.git/index.html",
+    "main.d87b9ec9.css.map": "/VuzPham/TestQuestion_Nhom6.git/static/css/main.d87b9ec9.css.map",
+    "main.08df1e20.js.map": "/VuzPham/TestQuestion_Nhom6.git/static/js/main.08df1e20.js.map",
+    "453.bc454679.chunk.js.map": "/VuzPham/TestQuestion_Nhom6.git/static/js/453.bc454679.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d87b9ec9.css",
+    "static/js/main.08df1e20.js"
+  ]
+}

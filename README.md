@@ -6,6 +6,59 @@ DOC: [BaoCaoNhom6](https://docs.google.com/spreadsheets/d/119bNqV_IazycFBhkVsnMN
 <br/>
 API: https://66bf5cf442533c403145f070.mockapi.io/api/question-answer/id
 
+
+# Thành viên
+<h3>My Team  </h3>
+
+| STT | Họ tên | Chức vụ  |
+|----------------|--------------------|--------------------|
+|  1  |  Phạm Nguyên Vũ  |   Leader  |
+|  2  |  Nguyễn Xuân Bính  |   Member  |
+|  2  |  Lê Anh Quân  |   Member  |
+|  2  |  Lê Minh Tuấn  |   Member  |
+
+-----------------------------------------------
+### Công nghệ sử dụng 
+ - ReactJS 
+ - Visual studio code 
+ - Web:
+  	+ Frontend: HTML, CSS, JavaScript, SCSS
+-----------------------------------------------
+</p>
+### Yêu Cầu
+-Giao diện:
+  + Giao diện mở đầu hiển thị tất cả câu hỏi của thực tập sinh
+  + Thực tập sinh và Admin sử dụng chung một giao diện chỉ khác tính năng trên thanh menu
+  + Giao diện phải có đầy đủ: header (header phải có logo của công ty), footer.
+  + Thiết kế kết hợp thư viện là một lợi thế
+  + Thiết kế tối thiểu 2 route.
+  + Có thể sử dụng react Hook, redux
+-Các chức năng chính:
+  + Thực tập sinh: CRUD câu hỏi
+  + Admin: Trả lời câu hỏi, xóa câu hỏi
+
+-----------------------------------------------
+</p>
+### Phân Công
+Xuân Bính: Thiết kế giao diện
+  + Tạo cấu trúc cơ bản của giao diện: header, footer, và các phần chính.
+  + Chọn và tích hợp thư viện UI (Material-UI, Ant Design, Bootstrap, v.v.).
+  + Thiết lập routing cơ bản với React Router (ít nhất hai route).
+  + Hỗ Trợ giao diện cho thực tập sinh
+Anh Quân: Xây dựng giao diện CRUD cho thực tập sinh
+  + Tạo giao diện thêm câu hỏi, sửa câu hỏi và xóa câu hỏi.
+  + Xây dựng trang hiển thị danh sách câu hỏi.
+  + Sử dụng useState để quản lý trạng thái câu hỏi.
+Nguyên Vũ: Xây dựng giao diện cho admin
+  +Tạo giao diện trả lời câu hỏi và xóa câu hỏi.
+  +Thiết kế giao diện quản lý quyền truy cập cho admin.
+  +Sử dụng useState để quản lý trạng thái trả lời và xóa câu hỏi.
+Minh : Cấu hình trạng thái cơ bản và truyền dữ liệu
+  Quản lý trạng thái của các component bằng useState.
+  Truyền props giữa các component để chia sẻ dữ liệu và trạng thái.
+  Cấu hình các component để sử dụng trạng thái quản lý câu hỏi.
+-----------------------------------------------
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -27,36 +27,36 @@ API: https://66bf5cf442533c403145f070.mockapi.io/api/question-answer/id
 </p>
 ### Yêu Cầu</br>
 -Giao diện:</br>
-  + Giao diện mở đầu hiển thị tất cả câu hỏi của thực tập sinh</br>
-  + Thực tập sinh và Admin sử dụng chung một giao diện chỉ khác tính năng trên thanh menu</br>
-  + Giao diện phải có đầy đủ: header (header phải có logo của công ty), footer.</br>
-  + Thiết kế kết hợp thư viện là một lợi thế</br>
-  + Thiết kế tối thiểu 2 route.</br>
-  + Có thể sử dụng react Hook, redux</br>
+  &nbsp+ Giao diện mở đầu hiển thị tất cả câu hỏi của thực tập sinh</br>
+  &nbsp+ Thực tập sinh và Admin sử dụng chung một giao diện chỉ khác tính năng trên thanh menu</br>
+  &nbsp+ Giao diện phải có đầy đủ: header (header phải có logo của công ty), footer.</br>
+  &nbsp+ Thiết kế kết hợp thư viện là một lợi thế</br>
+  &nbsp+ Thiết kế tối thiểu 2 route.</br>
+  &nbsp+ Có thể sử dụng react Hook, redux</br>
 -Các chức năng chính:</br>
-  + Thực tập sinh: CRUD câu hỏi</br>
-  + Admin: Trả lời câu hỏi, xóa câu hỏi</br>
+ &nbsp + Thực tập sinh: CRUD câu hỏi</br>
+ &nbsp + Admin: Trả lời câu hỏi, xóa câu hỏi</br>
 
 -----------------------------------------------
 </p>
 ### Phân Công</br>
 Xuân Bính: Thiết kế giao diện</br>
-  + Tạo cấu trúc cơ bản của giao diện: header, footer, và các phần chính.</br>
-  + Chọn và tích hợp thư viện UI (Material-UI, Ant Design, Bootstrap, v.v.).</br>
-  + Thiết lập routing cơ bản với React Router (ít nhất hai route).</br>
-  + Hỗ Trợ giao diện cho thực tập sinh</br>
+  &nbsp+ Tạo cấu trúc cơ bản của giao diện: header, footer, và các phần chính.</br>
+  &nbsp+ Chọn và tích hợp thư viện UI (Material-UI, Ant Design, Bootstrap, v.v.).</br>
+ &nbsp + Thiết lập routing cơ bản với React Router (ít nhất hai route).</br>
+  &nbsp+ Hỗ Trợ giao diện cho thực tập sinh</br>
 Anh Quân: Xây dựng giao diện CRUD cho thực tập sinh</br>
-  + Tạo giao diện thêm câu hỏi, sửa câu hỏi và xóa câu hỏi.</br>
-  + Xây dựng trang hiển thị danh sách câu hỏi.</br>
-  + Sử dụng useState để quản lý trạng thái câu hỏi.</br>
+ &nbsp + Tạo giao diện thêm câu hỏi, sửa câu hỏi và xóa câu hỏi.</br>
+ &nbsp + Xây dựng trang hiển thị danh sách câu hỏi.</br>
+ &nbsp + Sử dụng useState để quản lý trạng thái câu hỏi.</br>
 Nguyên Vũ: Xây dựng giao diện cho admin</br>
-  +Tạo giao diện trả lời câu hỏi và xóa câu hỏi.</br>
-  +Thiết kế giao diện quản lý quyền truy cập cho admin.</br>
-  +Sử dụng useState để quản lý trạng thái trả lời và xóa câu hỏi.</br>
+&nbsp  +Tạo giao diện trả lời câu hỏi và xóa câu hỏi.</br>
+&nbsp  +Thiết kế giao diện quản lý quyền truy cập cho admin.</br>
+ &nbsp +Sử dụng useState để quản lý trạng thái trả lời và xóa câu hỏi.</br>
 Minh : Cấu hình trạng thái cơ bản và truyền dữ liệu</br>
-  Quản lý trạng thái của các component bằng useState.</br>
-  Truyền props giữa các component để chia sẻ dữ liệu và trạng thái.</br>
-  Cấu hình các component để sử dụng trạng thái quản lý câu hỏi.</br>
+  &nbsp+ Quản lý trạng thái của các component bằng useState.</br>
+  &nbsp+ Truyền props giữa các component để chia sẻ dữ liệu và trạng thái.</br>
+  &nbsp+ Cấu hình các component để sử dụng trạng thái quản lý câu hỏi.</br>
 -----------------------------------------------
 
 # Getting Started with Create React App

@@ -21,7 +21,7 @@ const AddQuestionModal = ({ open, onClose, onAdd }) => {
 
         if (response.ok) {
           const newQuestion = await response.json();
-          onAdd(newQuestion); // Truyền câu hỏi mới đến QuestionsList
+          onAdd(newQuestion); 
           setText('');
           onClose(); 
         } else {

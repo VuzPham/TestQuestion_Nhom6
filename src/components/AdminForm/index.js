@@ -3,7 +3,7 @@ import './StyleAdminPage.css'; // Đảm bảo bạn đã tạo file CSS cho cá
 import images from '~/assets/images';
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPager, faPaperPlane, faReply, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faPaperPlane, faReply, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function AdminPage() {
@@ -89,7 +89,6 @@ export default function AdminPage() {
     }
   };
 
-
   return (
     <div className="comment-box">
       <h2 className="uppercase-header">Danh Sách Câu Hỏi</h2>
@@ -128,7 +127,7 @@ export default function AdminPage() {
                 </div>
               </div>
             {/* Hiển thị AnswerBox chỉ khi question.answer không phải là rỗng */}
-            {question.answer !== " " && (
+            {question.answer !== "" && (
                     <AnswerBox 
                       answer={question.answer} 
                       onDelete={() => handleDelete(question.id)} // Truyền hàm xóa vào AnswerBox  
